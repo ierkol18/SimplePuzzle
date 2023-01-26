@@ -12,6 +12,13 @@ public class Timer : MonoBehaviour
     {
         timer -= Time.deltaTime;
         timerText.text = ((int)timer).ToString("F2");
+
+        // Update the timer
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+           // EndGame();
+        }
     }
 
     public bool IsTimeUp()
