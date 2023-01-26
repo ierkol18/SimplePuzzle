@@ -10,93 +10,52 @@ public class GridManager : MonoBehaviour
     public int rows = 8;
     private GridLayoutGroup gridLayout;
     private List<GameObject> jewels = new List<GameObject>();
-    private GameObject[,] grid;
+    private GameObject[,] grid = new GameObject[8, 8];
 
     void Start()
     {
-        grid = new GameObject[8,8];
         gridLayout = GetComponent<GridLayoutGroup>();
         gridLayout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
         gridLayout.constraintCount = columns;
 
         // Instantiate the jewel prefabs and add them to the grid layout
-        for (int x = 0; x < columns; x++)
+        for (int row = 0; row < rows; row++)
         {
-            for (int y = 0; y < rows; y++)
+            for (int col = 0; col < columns; col++)
             {
                 GameObject selectedJewel = jewelPrefabs[Random.Range(0, jewelPrefabs.Length)];
+                while(!CanAdd(row, col, selectedJewel))
+                    selectedJewel = jewelPrefabs[Random.Range(0, jewelPrefabs.Length)];
+
                 GameObject jewel = Instantiate(selectedJewel);
                 jewel.transform.SetParent(transform);
                 jewels.Add(jewel);
-                grid[x,y] = jewel;
+                grid[row,col] = jewel;
             }
         }
-
-        // Check for 3 adjacent jewels in each row and column
-        CheckAdjacentJewels();
 
         GameManager.instance.Prepare_Grid(grid);
     }
 
-
-    //Helper methods
-    private void CheckAdjacentJewels()
+    private bool CanAdd(int row, int col, GameObject selectedJewel)
     {
-        for (int x = 0; x < columns; x++)
-        {
-            for (int y = 0; y < rows; y++)
-            {
-                // Check for 3 adjacent jewels in current row
-                if (x < columns - 2 && GetJewel(x, y).name == GetJewel(x + 1, y).name && GetJewel(x, y).name == GetJewel(x + 2, y).name)
-                {
-                    // Check for 3 adjacent jewels in current column
-                    if (y < rows - 2 && GetJewel(x, y).name == GetJewel(x, y + 1).name && GetJewel(x, y).name == GetJewel(x, y + 2).name)
-                        ReplaceJewel(x, y);
-                    else if (y > 0 && y < rows - 1 && GetJewel(x, y).name == GetJewel(x, y + 1).name && GetJewel(x, y).name == GetJewel(x, y - 1).name)
-                        ReplaceJewel(x, y);
-                    else if (y > 1 && GetJewel(x, y).name == GetJewel(x, y - 1).name && GetJewel(x, y).name == GetJewel(x, y - 2).name)
-                        ReplaceJewel(x, y);
-                }
-                if  (x > 0 && x < columns - 1 && GetJewel(x, y).name == GetJewel(x + 1, y).name && GetJewel(x, y).name == GetJewel(x - 1, y).name)
-                {
-                    // Check for 3 adjacent jewels in current column
-                    if (y < rows - 2 && GetJewel(x, y).name == GetJewel(x, y + 1).name && GetJewel(x, y).name == GetJewel(x, y + 2).name)
-                        ReplaceJewel(x, y);
-                    else if (y > 0 && y < rows - 1 && GetJewel(x, y).name == GetJewel(x, y + 1).name && GetJewel(x, y).name == GetJewel(x, y - 1).name)
-                        ReplaceJewel(x, y);
-                    else if (y > 1 && GetJewel(x, y).name == GetJewel(x, y - 1).name && GetJewel(x, y).name == GetJewel(x, y - 2).name)
-                        ReplaceJewel(x, y);
-                }
-                if (x > 1 && GetJewel(x, y).name == GetJewel(x - 1, y).name && GetJewel(x, y).name == GetJewel(x - 2, y).name)
-                {
-                    // Check for 3 adjacent jewels in current column
-                    if (y < rows - 2 && GetJewel(x, y).name == GetJewel(x, y + 1).name && GetJewel(x, y).name == GetJewel(x, y + 2).name)
-                        ReplaceJewel(x, y);
-                    else if (y > 0 && y < rows - 1 && GetJewel(x, y).name == GetJewel(x, y + 1).name && GetJewel(x, y).name == GetJewel(x, y - 1).name)
-                        ReplaceJewel(x, y);
-                    else if (y > 1 && GetJewel(x, y).name == GetJewel(x, y - 1).name && GetJewel(x, y).name == GetJewel(x, y - 2).name)
-                        ReplaceJewel(x, y);
-                }
-            }
-        }
+        if(col == 0 && row == 0)
+            return true;
+            
+        //Check if color is same with tops
+        if(row >= 2)
+            if (grid[row - 1, col].name.Contains(selectedJewel.name))
+                if (grid[row - 2, col].name.Contains(selectedJewel.name))
+                    return false;
+
+        //Check if color is same with left
+        if (col >= 2)
+            if (grid[row, col - 1].name.Contains(selectedJewel.name))
+                if (grid[row, col - 2].name.Contains(selectedJewel.name))
+                    return false;
+               
+        return true;
     }
 
-
-    private void ReplaceJewel(int x, int y)
-    {
-        GameObject currentJewel = jewels[x + y * columns];
-        GameObject newJewel = currentJewel;
-
-        while (newJewel == currentJewel)
-            newJewel = jewelPrefabs[Random.Range(0, jewelPrefabs.Length)];
-        
-        jewels[x + y * columns] = newJewel;
-    }
-
-    //Getters & Setters
-    public GameObject GetJewel(int x, int y)
-    {
-        return jewels[x + y * columns];
-    }
 }
 
