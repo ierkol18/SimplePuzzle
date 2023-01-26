@@ -152,7 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a513cd080ba6b485abfc0e00277837a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jewelPrefab: {fileID: 0}
+  gridRectT: {fileID: 830090552}
+  countLeftClick: 0
 --- !u!4 &121629535
 Transform:
   m_ObjectHideFlags: 0
@@ -432,7 +433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.7877, y: -232.31146}
+  m_AnchoredPosition: {x: 0, y: -232.31146}
   m_SizeDelta: {x: 760, y: 760}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &830090554
@@ -480,11 +481,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jewelPrefabs:
-  - {fileID: 3966105993090068488, guid: 3dfddd3aac38b449f9dc3e9b7ebc5bab, type: 3}
-  - {fileID: 3966105993090068488, guid: dcd5700946f32439e85ea6cef06787a8, type: 3}
-  - {fileID: 3966105993090068488, guid: cc1a6d878fba24108b8bd5bd98610d92, type: 3}
-  - {fileID: 3966105993090068488, guid: 441764b2223e14510bcf1376fef26fad, type: 3}
-  - {fileID: 3966105993090068488, guid: 8034ae9196afd418fb04dbb47061ef93, type: 3}
+  - {fileID: 753063782163305750, guid: 3dfddd3aac38b449f9dc3e9b7ebc5bab, type: 3}
+  - {fileID: 8660403139749939962, guid: dcd5700946f32439e85ea6cef06787a8, type: 3}
+  - {fileID: 734392169127660061, guid: cc1a6d878fba24108b8bd5bd98610d92, type: 3}
+  - {fileID: 3548327167010861131, guid: 441764b2223e14510bcf1376fef26fad, type: 3}
+  - {fileID: 3779734030392938241, guid: 8034ae9196afd418fb04dbb47061ef93, type: 3}
   columns: 8
   rows: 8
 --- !u!1 &858088920

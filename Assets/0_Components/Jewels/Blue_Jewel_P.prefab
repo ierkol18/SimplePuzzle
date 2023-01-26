@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3966105993090068495}
   - component: {fileID: 3966105993090068493}
+  - component: {fileID: 753063782163305750}
   - component: {fileID: 3966105993090068494}
+  - component: {fileID: 7493227091929677048}
   m_Layer: 5
   m_Name: Blue_Jewel_P
   m_TagString: Untagged
@@ -46,6 +48,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3966105993090068488}
   m_CullTransparentMesh: 1
+--- !u!114 &753063782163305750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966105993090068488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e44c822cfbc34f739b9d2667546255f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jewelUI: {fileID: 7493227091929677048}
 --- !u!114 &3966105993090068494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,3 +91,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7493227091929677048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966105993090068488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212ccc114574246c997364df5c66724c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

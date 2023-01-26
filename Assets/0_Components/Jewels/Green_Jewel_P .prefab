@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3966105993090068495}
   - component: {fileID: 3966105993090068493}
+  - component: {fileID: 8660403139749939962}
+  - component: {fileID: -959071104638279280}
   - component: {fileID: 3966105993090068494}
   m_Layer: 5
   m_Name: 'Green_Jewel_P '
@@ -46,6 +48,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3966105993090068488}
   m_CullTransparentMesh: 1
+--- !u!114 &8660403139749939962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966105993090068488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e44c822cfbc34f739b9d2667546255f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jewelUI: {fileID: -959071104638279280}
+--- !u!114 &-959071104638279280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966105993090068488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212ccc114574246c997364df5c66724c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3966105993090068494
 MonoBehaviour:
   m_ObjectHideFlags: 0

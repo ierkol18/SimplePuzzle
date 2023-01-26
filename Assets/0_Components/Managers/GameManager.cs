@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
-    private GameObject[,] grid;
-    private GameObject selectedObject;
+    private Jewel[,] grid = new Jewel[8,8];
+    public RectTransform gridRectT;
+    public int countLeftClick = 0;
 
     private void Awake()
     {
@@ -18,18 +17,27 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void Prepare_Grid(GameObject[,] grid)
+    public void Prepare_Grid(Jewel[,] grid)
     {
         this.grid = grid;
     }
 
+    public void Replace(Jewel draggingJewel, Jewel aimJewel)
+    {
+        
+
+    }
+
+
+/*
     void Update()
     {
         // Handle input events
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (grid[(int)clickPos.x, (int)clickPos.y] != null)
+
+            if (grid[(int)clickPos.x + 5, (int)clickPos.y] != null)
             {
                 selectedObject = grid[(int)clickPos.x, (int)clickPos.y];
             }
@@ -139,5 +147,7 @@ public class GameManager : MonoBehaviour
         // Handle end of game logic, such as displaying a game over message and resetting the game
     }
 
+
+*/
 }
 

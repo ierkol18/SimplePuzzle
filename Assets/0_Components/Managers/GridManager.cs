@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class GridManager : MonoBehaviour
 {
-    public GameObject[] jewelPrefabs;
+    public Jewel[] jewelPrefabs;
     public int columns = 8;
     public int rows = 8;
     private GridLayoutGroup gridLayout;
-    private List<GameObject> jewels = new List<GameObject>();
-    private GameObject[,] grid = new GameObject[8, 8];
+    private List<Jewel> jewels = new List<Jewel>();
+    private Jewel[,] grid = new Jewel[8, 8];
 
     void Start()
     {
@@ -23,13 +23,14 @@ public class GridManager : MonoBehaviour
         {
             for (int col = 0; col < columns; col++)
             {
-                GameObject selectedJewel = jewelPrefabs[Random.Range(0, jewelPrefabs.Length)];
+                Jewel selectedJewel = jewelPrefabs[Random.Range(0, jewelPrefabs.Length)];
                 while(!CanAdd(row, col, selectedJewel))
                     selectedJewel = jewelPrefabs[Random.Range(0, jewelPrefabs.Length)];
 
-                GameObject jewel = Instantiate(selectedJewel);
+                Jewel jewel = Instantiate(selectedJewel).GetComponent<Jewel>();
                 jewel.transform.SetParent(transform);
                 jewels.Add(jewel);
+                jewel.jewelUI.Prepare(jewel, grid);
                 grid[row,col] = jewel;
             }
         }
@@ -37,7 +38,7 @@ public class GridManager : MonoBehaviour
         GameManager.instance.Prepare_Grid(grid);
     }
 
-    private bool CanAdd(int row, int col, GameObject selectedJewel)
+    private bool CanAdd(int row, int col, Jewel selectedJewel)
     {
         if(col == 0 && row == 0)
             return true;
